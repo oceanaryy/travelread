@@ -32,6 +32,11 @@ public class BoardController extends UiUtils {
 
 	@Autowired
 	private BoardService boardService;
+	@GetMapping(value = "/")
+	public String root(@ModelAttribute("params") BoardDTO params, Model model) {
+		return openBoardList(params,model);
+	}
+
 
 	@GetMapping(value = "/board/write.do")
 	public String openBoardWrite(@ModelAttribute("params") BoardDTO params, @RequestParam(value = "idx", required = false) Long idx, Model model) {
